@@ -1,6 +1,5 @@
 from langchain.agents import create_agent
 from langchain.tools import tool
-# from langchain_huggingface.llms import HuggingFaceEndpoint
 from langchain_anthropic import ChatAnthropic
 from tools import get_key_places, get_weather
 from dotenv import load_dotenv
@@ -16,28 +15,7 @@ load_dotenv()
 if not os.getenv("ANTHROPIC_API_KEY"):
     os.environ["ANTHROPIC_API_KEY"] = getpass.getpass("Enter your Hugging Face API token: ")
 
-
-# Create your Hugging Face LLM wrapper
-# llm = HuggingFacePipeline(pipeline=your_loaded_pipeline)
-
-# Assume you have a loaded Hugging Face LLM pipeline
-# llm = HuggingFaceEndpoint(
-#     repo_id="deepseek-ai/DeepSeek-R1-0528",
-#     task="text-generation",
-#     max_new_tokens=100,
-#     do_sample=False,
-#     repetition_penalty=1.2,
-#     provider="auto",
-# )
-
 llm = ChatAnthropic(model="claude-3-haiku-20240307")#, anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"))
-
-# Wrap these tools
-# tools = [
-#     tool(name="route", func=get_key_places, description="Get route and waypoints"),
-#     tool(name="weather", func=get_weather, description="Get weather forecast"),
-#     # Tool(name="analyze", func=analyze_weather, description="Analyze weather and suggest timings")
-# ]
 
 # User input example
 input_prompt = "Plan a bike trip from Pune to Mumbai with preferred good weather for 17 Nov 2025."
