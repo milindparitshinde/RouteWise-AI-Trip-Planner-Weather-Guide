@@ -92,8 +92,3 @@ def get_weather(location: str, date: str):
     response = requests.get(url, headers=headers, params=body)
 
     return response.json()
-
-# # Tool 3: Analyze weather along route and suggest departure time & rest stops
-# def analyze_weather(route, preferred_weather):
-#     # Logic to find best time to leave or suggest stops
-#     return suggestion_summary
